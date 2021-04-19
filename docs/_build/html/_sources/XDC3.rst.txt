@@ -1,0 +1,94 @@
+
+.. include:: include_announcement.rst
+
+====
+xdc3
+====
+
+    The xdc3 class is a wrapper to house all Ethereum related modules.
+
+.. code-block:: javascript
+
+    import {xdc3} from 'xdc3';
+
+    // "xdc3.providers.givenProvider" will be set if in an Ethereum supported browser.
+    const xdc3 = new xdc3(xdc3.givenProvider || 'ws://some.local-or-remote.node:8546');
+
+    > xdc3.eth
+    > xdc3.shh
+    > xdc3.bzz
+    > xdc3.utils
+    > xdc3.version
+
+------------------------------------------------------------------------------
+
+xdc3.modules
+=====================
+
+    Static property of the xdc3 class
+
+.. code-block:: javascript
+
+    xdc3.modules
+
+    Will return an object with the classes of all major sub modules, to be able to instantiate them manually.
+
+-------
+Returns
+-------
+
+``Object``: A list of modules:
+    - ``Eth`` - ``Function``: the Eth module for interacting with the Ethereum network see :ref:`xdc3.eth <eth>` for more.
+    - ``Net`` - ``Function``: the Net module for interacting with network properties see :ref:`xdc3.eth.net <eth-net>` for more.
+    - ``Personal`` - ``Function``: the Personal module for interacting with the Ethereum accounts see :ref:`xdc3.eth.personal <eth-personal>` for more.
+    - ``Shh`` - ``Function``: the Shh module for interacting with the whisper protocol see :ref:`xdc3.shh <shh>` for more.
+    - ``Bzz`` - ``Function``: the Bzz module for interacting with the swarm network see :ref:`xdc3.bzz <bzz>` for more.
+
+-------
+Example
+-------
+
+.. code-block:: javascript
+
+    xdc3.modules
+    > {
+        Eth: Eth function(provider, options?, net?),
+        Net: Net function(provider, options?, net?),
+        Personal: Personal function(provider, options?, net?),
+        Shh: Shh function(provider, options?, net?),
+        Bzz: Bzz function(provider, options?, net?),
+    }
+
+
+------------------------------------------------------------------------------
+
+.. include:: include_package-core.rst
+
+------------------------------------------------------------------------------
+
+version
+=======
+
+    Property of the xdc3 class.
+
+.. code-block:: javascript
+
+    xdc3.version
+    xdc3.version
+
+Contains the version of the ``xdc3`` wrapper class.
+
+-------
+Returns
+-------
+
+``String``: The current version.
+
+-------
+Example
+-------
+
+.. code-block:: javascript
+
+    xdc3.version;
+    > "1.0.0"

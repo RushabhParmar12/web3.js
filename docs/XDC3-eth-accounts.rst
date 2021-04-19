@@ -3,10 +3,10 @@
 .. include:: include_announcement.rst
 
 =================
-web3.eth.accounts
+xdc3.eth.accounts
 =================
 
-The ``web3.eth.accounts`` contains functions to generate Ethereum accounts and sign transactions and data.
+The ``xdc3.eth.accounts`` contains functions to generate Ethereum accounts and sign transactions and data.
 
 .. note:: This package has NOT been audited and might potentially be unsafe. Take precautions to clear memory properly, store the private keys safely, and test transaction receiving and sending functionality properly before using in production!
 
@@ -15,9 +15,9 @@ To use this package standalone use:
 
 .. code-block:: javascript
 
-    import {Accounts} from 'web3-eth-accounts;
+    import {Accounts} from 'xdc3-eth-accounts;
 
-    // Passing in the eth or web3 package is necessary to allow retrieving chainId, gasPrice and nonce automatically
+    // Passing in the eth or xdc3 package is necessary to allow retrieving chainId, gasPrice and nonce automatically
     // for accounts.signTransaction().
     const accounts = new Accounts('ws://localhost:8546', options);
 
@@ -32,10 +32,10 @@ create
 
 .. code-block:: javascript
 
-    web3.eth.accounts.create([entropy]);
+    xdc3.eth.accounts.create([entropy]);
 
 Generates an account object with private key and public key. It's different from
-:ref:`web3.eth.personal.newAccount() <personal-newaccount>` which creates an account
+:ref:`xdc3.eth.personal.newAccount() <personal-newaccount>` which creates an account
 over the network on the node via an RPC call.
 
 ----------
@@ -54,8 +54,8 @@ Returns
 
     - ``address`` - ``string``: The account address.
     - ``privateKey`` - ``string``: The accounts private key. This should never be shared or stored unencrypted in localstorage! Also make sure to ``null`` the memory after usage.
-    - ``signTransaction(tx [, callback])`` - ``Function``: The function to sign transactions. See :ref:`web3.eth.accounts.signTransaction() <eth-accounts-signtransaction>` for more.
-    - ``sign(data)`` - ``Function``: The function to sign transactions. See :ref:`web3.eth.accounts.sign() <eth-accounts-sign>` for more.
+    - ``signTransaction(tx [, callback])`` - ``Function``: The function to sign transactions. See :ref:`xdc3.eth.accounts.signTransaction() <eth-accounts-signtransaction>` for more.
+    - ``sign(data)`` - ``Function``: The function to sign transactions. See :ref:`xdc3.eth.accounts.sign() <eth-accounts-sign>` for more.
 
 -------
 Example
@@ -63,7 +63,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.create();
+    xdc3.eth.accounts.create();
     > {
         address: "0xb8CE9ab6943e0eCED004cDe8e3bBed6568B2Fa01",
         privateKey: "0x348ce564d427a3311b6536bbcff9390d69395b06ed6c486954e971d960fe8709",
@@ -72,7 +72,7 @@ Example
         encrypt: function(password){...}
     }
 
-    web3.eth.accounts.create('2435@#@#@±±±±!!!!678543213456764321§34567543213456785432134567');
+    xdc3.eth.accounts.create('2435@#@#@±±±±!!!!678543213456764321§34567543213456785432134567');
     > {
         address: "0xF2CD2AA0c7926743B1D4310b2BC984a0a453c3d4",
         privateKey: "0xd7325de5c2c1cf0009fac77d3d04a9c004b038883446b065871bc3e831dcd098",
@@ -81,7 +81,7 @@ Example
         encrypt: function(password){...}
     }
 
-    web3.eth.accounts.create(web3.utils.randomHex(32));
+    xdc3.eth.accounts.create(xdc3.utils.randomHex(32));
     > {
         address: "0xe78150FaCD36E8EB00291e251424a0515AA1FF05",
         privateKey: "0xcc505ee6067fba3f6fc2050643379e190e087aeffe5d958ab9f2f3ed3800fa4e",
@@ -97,7 +97,7 @@ privateKeyToAccount
 
 .. code-block:: javascript
 
-    web3.eth.accounts.privateKeyToAccount(privateKey);
+    xdc3.eth.accounts.privateKeyToAccount(privateKey);
 
 Creates an account object from a private key.
 
@@ -119,7 +119,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.privateKeyToAccount('0x348ce564d427a3311b6536bbcff9390d69395b06ed6c486954e971d960fe8709');
+    xdc3.eth.accounts.privateKeyToAccount('0x348ce564d427a3311b6536bbcff9390d69395b06ed6c486954e971d960fe8709');
     > {
         address: '0xb8CE9ab6943e0eCED004cDe8e3bBed6568B2Fa01',
         privateKey: '0x348ce564d427a3311b6536bbcff9390d69395b06ed6c486954e971d960fe8709',
@@ -137,7 +137,7 @@ signTransaction
 
 .. code-block:: javascript
 
-    web3.eth.accounts.signTransaction(tx, privateKey [, callback]);
+    xdc3.eth.accounts.signTransaction(tx, privateKey [, callback]);
 
 Signs an Ethereum transaction with a given private key.
 
@@ -146,12 +146,12 @@ Parameters
 ----------
 
 1. ``tx`` - ``Object``: The transaction's properties object as follows:
-    - ``nonce`` - ``String``: (optional) The nonce to use when signing this transaction. Default will use :ref:`web3.eth.getTransactionCount() <eth-gettransactioncount>`.
-    - ``chainId`` - ``String``: (optional) The chain id to use when signing this transaction. Default will use :ref:`web3.eth.net.getId() <net-getid>`.
+    - ``nonce`` - ``String``: (optional) The nonce to use when signing this transaction. Default will use :ref:`xdc3.eth.getTransactionCount() <eth-gettransactioncount>`.
+    - ``chainId`` - ``String``: (optional) The chain id to use when signing this transaction. Default will use :ref:`xdc3.eth.net.getId() <net-getid>`.
     - ``to`` - ``String``: (optional) The recevier of the transaction, can be empty when deploying a contract.
     - ``data`` - ``String``: (optional) The call data of the transaction, can be empty for simple value transfers.
     - ``value`` - ``String``: (optional) The value of the transaction in wei.
-    - ``gasPrice`` - ``String``: (optional) The gas price set by this transaction, if empty, it will use :ref:`web3.eth.gasPrice() <eth-gasprice>`
+    - ``gasPrice`` - ``String``: (optional) The gas price set by this transaction, if empty, it will use :ref:`xdc3.eth.gasPrice() <eth-gasprice>`
     - ``gas`` - ``String``: The gas provided by the transaction.
 2. ``privateKey`` - ``String``: The private key to sign with.
 3. ``callback`` - ``Function``: (optional) Optional callback, returns an error object as first parameter and the result as second.
@@ -166,7 +166,7 @@ Returns
     - ``r`` - ``String``: First 32 bytes of the signature
     - ``s`` - ``String``: Next 32 bytes of the signature
     - ``v`` - ``String``: Recovery value + 27
-    - ``rawTransaction`` - ``String``: The RLP encoded transaction, ready to be send using :ref:`web3.eth.sendSignedTransaction <eth-sendsignedtransaction>`.
+    - ``rawTransaction`` - ``String``: The RLP encoded transaction, ready to be send using :ref:`xdc3.eth.sendSignedTransaction <eth-sendsignedtransaction>`.
 
 
 -------
@@ -175,7 +175,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.signTransaction({
+    xdc3.eth.accounts.signTransaction({
         to: '0xF0109fC8DF283027b6285cc889F5aA624EaC1F55',
         value: '1000000000',
         gas: 2000000
@@ -189,7 +189,7 @@ Example
         rawTransaction: '0xf869808504e3b29200831e848094f0109fc8df283027b6285cc889f5aa624eac1f55843b9aca008025a0c9cf86333bcb065d140032ecaab5d9281bde80f21b9687b3e94161de42d51895a0727a108a0b8d101465414033c3f705a9c7b826e596766046ee1183dbc8aeaa68'
     }
 
-    web3.eth.accounts.signTransaction({
+    xdc3.eth.accounts.signTransaction({
         to: '0xF0109fC8DF283027b6285cc889F5aA624EaC1F55',
         value: '1000000000',
         gas: 2000000,
@@ -215,7 +215,7 @@ recoverTransaction
 
 .. code-block:: javascript
 
-    web3.eth.accounts.recoverTransaction(rawTransaction);
+    xdc3.eth.accounts.recoverTransaction(rawTransaction);
 
 Recovers the Ethereum address which was used to sign the given RLP encoded transaction.
 
@@ -238,7 +238,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.recoverTransaction('0xf86180808401ef364594f0109fc8df283027b6285cc889f5aa624eac1f5580801ca031573280d608f75137e33fc14655f097867d691d5c4c44ebe5ae186070ac3d5ea0524410802cdc025034daefcdfa08e7d2ee3f0b9d9ae184b2001fe0aff07603d9');
+    xdc3.eth.accounts.recoverTransaction('0xf86180808401ef364594f0109fc8df283027b6285cc889f5aa624eac1f5580801ca031573280d608f75137e33fc14655f097867d691d5c4c44ebe5ae186070ac3d5ea0524410802cdc025034daefcdfa08e7d2ee3f0b9d9ae184b2001fe0aff07603d9');
     > "0xF0109fC8DF283027b6285cc889F5aA624EaC1F55"
 
 
@@ -249,9 +249,9 @@ hashMessage
 
 .. code-block:: javascript
 
-    web3.eth.accounts.hashMessage(message);
+    xdc3.eth.accounts.hashMessage(message);
 
-Hashes the given message to be passed :ref:`web3.eth.accounts.recover() <accounts-recover>` function. The data  will be UTF-8 HEX decoded and enveloped as follows: ``"\x19Ethereum Signed Message:\n" + message.length + message`` and hashed using keccak256.
+Hashes the given message to be passed :ref:`xdc3.eth.accounts.recover() <accounts-recover>` function. The data  will be UTF-8 HEX decoded and enveloped as follows: ``"\x19Ethereum Signed Message:\n" + message.length + message`` and hashed using keccak256.
 
 ----------
 Parameters
@@ -272,11 +272,11 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.hashMessage("Hello World")
+    xdc3.eth.accounts.hashMessage("Hello World")
     > "0xa1de988600a42c4b4ab089b619297c17d53cffae5d5120d82d8a92d0bb3b78f2"
 
     // the below results in the same hash
-    web3.eth.accounts.hashMessage(web3.utils.utf8ToHex("Hello World"))
+    xdc3.eth.accounts.hashMessage(xdc3.utils.utf8ToHex("Hello World"))
     > "0xa1de988600a42c4b4ab089b619297c17d53cffae5d5120d82d8a92d0bb3b78f2"
 
 
@@ -290,7 +290,7 @@ sign
 
 .. code-block:: javascript
 
-    web3.eth.accounts.sign(data, privateKey);
+    xdc3.eth.accounts.sign(data, privateKey);
 
 Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as follows: ``"\x19Ethereum Signed Message:\n" + message.length + message``.
 
@@ -319,7 +319,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.sign('Some data', '0x4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318');
+    xdc3.eth.accounts.sign('Some data', '0x4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318');
     > {
         message: 'Some data',
         messageHash: '0x1da44b586eb0729ff70a73c326926f6ed5a25f5b056e7f47fbc6e58d86871655',
@@ -340,9 +340,9 @@ recover
 
 .. code-block:: javascript
 
-    web3.eth.accounts.recover(signatureObject);
-    web3.eth.accounts.recover(message, signature [, preFixed]);
-    web3.eth.accounts.recover(message, v, r, s [, preFixed]);
+    xdc3.eth.accounts.recover(signatureObject);
+    xdc3.eth.accounts.recover(message, signature [, preFixed]);
+    xdc3.eth.accounts.recover(message, v, r, s [, preFixed]);
 
 Recovers the Ethereum address which was used to sign the given data.
 
@@ -371,7 +371,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.recover({
+    xdc3.eth.accounts.recover({
         messageHash: '0x1da44b586eb0729ff70a73c326926f6ed5a25f5b056e7f47fbc6e58d86871655',
         v: '0x1c',
         r: '0xb91467e570a6466aa9e9876cbcd013baba02900b8979d43fe208a4a4f339f5fd',
@@ -380,11 +380,11 @@ Example
     > "0x2c7536E3605D9C16a7a3D7b1898e529396a65c23"
 
     // message, signature
-    web3.eth.accounts.recover('Some data', '0xb91467e570a6466aa9e9876cbcd013baba02900b8979d43fe208a4a4f339f5fd6007e74cd82e037b800186422fc2da167c747ef045e5d18a5f5d4300f8e1a0291c');
+    xdc3.eth.accounts.recover('Some data', '0xb91467e570a6466aa9e9876cbcd013baba02900b8979d43fe208a4a4f339f5fd6007e74cd82e037b800186422fc2da167c747ef045e5d18a5f5d4300f8e1a0291c');
     > "0x2c7536E3605D9C16a7a3D7b1898e529396a65c23"
 
     // message, v, r, s
-    web3.eth.accounts.recover('Some data', '0x1c', '0xb91467e570a6466aa9e9876cbcd013baba02900b8979d43fe208a4a4f339f5fd', '0x6007e74cd82e037b800186422fc2da167c747ef045e5d18a5f5d4300f8e1a029');
+    xdc3.eth.accounts.recover('Some data', '0x1c', '0xb91467e570a6466aa9e9876cbcd013baba02900b8979d43fe208a4a4f339f5fd', '0x6007e74cd82e037b800186422fc2da167c747ef045e5d18a5f5d4300f8e1a029');
     > "0x2c7536E3605D9C16a7a3D7b1898e529396a65c23"
 
 
@@ -397,9 +397,9 @@ encrypt
 
 .. code-block:: javascript
 
-    web3.eth.accounts.encrypt(privateKey, password);
+    xdc3.eth.accounts.encrypt(privateKey, password);
 
-Encrypts a private key to the web3 keystore v3 standard.
+Encrypts a private key to the xdc3 keystore v3 standard.
 
 ----------
 Parameters
@@ -421,7 +421,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.encrypt('0x4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318', 'test!')
+    xdc3.eth.accounts.encrypt('0x4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318', 'test!')
     > {
         version: 3,
         id: '04e9bcbb-96fa-497b-94d1-14df4cd20af6',
@@ -451,7 +451,7 @@ decrypt
 
 .. code-block:: javascript
 
-    web3.eth.accounts.decrypt(keystoreJsonV3, password);
+    xdc3.eth.accounts.decrypt(keystoreJsonV3, password);
 
 Decrypts a keystore v3 JSON, and creates the account.
 
@@ -475,7 +475,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.decrypt({
+    xdc3.eth.accounts.decrypt({
         version: 3,
         id: '04e9bcbb-96fa-497b-94d1-14df4cd20af6',
         address: '2c7536e3605d9c16a7a3d7b1898e529396a65c23',
@@ -512,9 +512,9 @@ wallet
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet;
+    xdc3.eth.accounts.wallet;
 
-Contains an in memory wallet with multiple accounts. These accounts can be used when using :ref:`web3.eth.sendTransaction() <eth-sendtransaction>`.
+Contains an in memory wallet with multiple accounts. These accounts can be used when using :ref:`xdc3.eth.sendTransaction() <eth-sendtransaction>`.
 
 -------
 Example
@@ -522,7 +522,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet;
+    xdc3.eth.accounts.wallet;
     > Wallet {
         0: {...}, // account by index
         "0xF0109fC8DF283027b6285cc889F5aA624EaC1F55": {...},  // same account by address
@@ -549,7 +549,7 @@ wallet.create
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.create(numberOfAccounts [, entropy]);
+    xdc3.eth.accounts.wallet.create(numberOfAccounts [, entropy]);
 
 Generates one or more accounts in the wallet. If wallets already exist they will not be overridden.
 
@@ -573,7 +573,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.create(2, '54674321§3456764321§345674321§3453647544±±±§±±±!!!43534534534534');
+    xdc3.eth.accounts.wallet.create(2, '54674321§3456764321§345674321§3453647544±±±§±±±!!!43534534534534');
     > Wallet {
         0: {...},
         "0xF0109fC8DF283027b6285cc889F5aA624EaC1F55": {...},
@@ -590,7 +590,7 @@ wallet.add
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.add(account);
+    xdc3.eth.accounts.wallet.add(account);
 
 Adds an account using a private key or account object to the wallet.
 
@@ -598,7 +598,7 @@ Adds an account using a private key or account object to the wallet.
 Parameters
 ----------
 
-1. ``account`` - ``String|Object``: A private key or account object created with :ref:`web3.eth.accounts.create() <accounts-create>`.
+1. ``account`` - ``String|Object``: A private key or account object created with :ref:`xdc3.eth.accounts.create() <accounts-create>`.
 
 
 -------
@@ -613,7 +613,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.add('0x4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318');
+    xdc3.eth.accounts.wallet.add('0x4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318');
     > {
         index: 0,
         address: '0x2c7536E3605D9C16a7a3D7b1898e529396a65c23',
@@ -623,7 +623,7 @@ Example
         encrypt: function(password){...}
     }
 
-    web3.eth.accounts.wallet.add({
+    xdc3.eth.accounts.wallet.add({
         privateKey: '0x348ce564d427a3311b6536bbcff9390d69395b06ed6c486954e971d960fe8709',
         address: '0xb8CE9ab6943e0eCED004cDe8e3bBed6568B2Fa01'
     });
@@ -645,7 +645,7 @@ wallet.remove
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.remove(account);
+    xdc3.eth.accounts.wallet.remove(account);
 
 Removes an account from the wallet.
 
@@ -668,7 +668,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet;
+    xdc3.eth.accounts.wallet;
     > Wallet {
         0: {...},
         "0xF0109fC8DF283027b6285cc889F5aA624EaC1F55": {...}
@@ -677,10 +677,10 @@ Example
         ...
     }
 
-    web3.eth.accounts.wallet.remove('0xF0109fC8DF283027b6285cc889F5aA624EaC1F55');
+    xdc3.eth.accounts.wallet.remove('0xF0109fC8DF283027b6285cc889F5aA624EaC1F55');
     > true
 
-    web3.eth.accounts.wallet.remove(3);
+    xdc3.eth.accounts.wallet.remove(3);
     > false
 
 
@@ -693,7 +693,7 @@ wallet.clear
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.clear();
+    xdc3.eth.accounts.wallet.clear();
 
 Securely empties the wallet and removes all its accounts.
 
@@ -715,7 +715,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.clear();
+    xdc3.eth.accounts.wallet.clear();
     > Wallet {
         add: function(){},
         remove: function(){},
@@ -734,7 +734,7 @@ wallet.encrypt
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.encrypt(password);
+    xdc3.eth.accounts.wallet.encrypt(password);
 
 Encrypts all wallet accounts to an array of encrypted keystore v3 objects.
 
@@ -757,7 +757,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.encrypt('test');
+    xdc3.eth.accounts.wallet.encrypt('test');
     > [ { version: 3,
         id: 'dcf8ab05-a314-4e37-b972-bf9b86f91372',
         address: '06f702337909c06c82b09b7a22f0a2f0855d1f68',
@@ -788,7 +788,7 @@ wallet.decrypt
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.decrypt(keystoreArray, password);
+    xdc3.eth.accounts.wallet.decrypt(keystoreArray, password);
 
 Decrypts keystore v3 objects.
 
@@ -812,7 +812,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.decrypt([
+    xdc3.eth.accounts.wallet.decrypt([
       { version: 3,
       id: '83191a81-aaca-451f-b63d-0c5f3b849289',
       address: '06f702337909c06c82b09b7a22f0a2f0855d1f68',
@@ -861,7 +861,7 @@ wallet.save
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.save(password [, keyName]);
+    xdc3.eth.accounts.wallet.save(password [, keyName]);
 
 Stores the wallet encrypted and as string in local storage.
 
@@ -872,7 +872,7 @@ Parameters
 ----------
 
 1. ``password`` - ``String``: The password to encrypt the wallet.
-2. ``keyName`` - ``String``: (optional) The key used for the local storage position, defaults to ``"web3js_wallet"``.
+2. ``keyName`` - ``String``: (optional) The key used for the local storage position, defaults to ``"xdc3js_wallet"``.
 
 
 -------
@@ -887,7 +887,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.save('test#!$');
+    xdc3.eth.accounts.wallet.save('test#!$');
     > true
 
 
@@ -898,7 +898,7 @@ wallet.load
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.load(password [, keyName]);
+    xdc3.eth.accounts.wallet.load(password [, keyName]);
 
 Loads a wallet from local storage and decrypts it.
 
@@ -909,7 +909,7 @@ Parameters
 ----------
 
 1. ``password`` - ``String``: The password to decrypt the wallet.
-2. ``keyName`` - ``String``: (optional) The key used for the localstorage position, defaults to ``"web3js_wallet"``.
+2. ``keyName`` - ``String``: (optional) The key used for the localstorage position, defaults to ``"xdc3js_wallet"``.
 
 
 -------
@@ -924,7 +924,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.accounts.wallet.load('test#!$', 'myWalletKey');
+    xdc3.eth.accounts.wallet.load('test#!$', 'myWalletKey');
     > Wallet {
         0: {...},
         1: {...},

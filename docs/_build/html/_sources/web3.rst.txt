@@ -2,34 +2,34 @@
 .. include:: include_announcement.rst
 
 ====
-Web3
+xdc3
 ====
 
     The Web3 class is a wrapper to house all Ethereum related modules.
 
 .. code-block:: javascript
 
-    import {Web3} from 'web3';
+    import {xdc3} from 'xdc3';
 
     // "Web3.providers.givenProvider" will be set if in an Ethereum supported browser.
     const web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546');
 
-    > web3.eth
-    > web3.shh
-    > web3.bzz
-    > web3.utils
-    > web3.version
+    > xdc3.eth
+    > xdc3.shh
+    > xdc3.bzz
+    > xdc3.utils
+    > xdc3.version
 
 ------------------------------------------------------------------------------
 
-Web3.modules
+xdc3.modules
 =====================
 
-    Static property of the Web3 class
+    Static property of the xdc3 class
 
 .. code-block:: javascript
 
-    Web3.modules
+    xdc3.modules
 
     Will return an object with the classes of all major sub modules, to be able to instantiate them manually.
 
@@ -50,7 +50,7 @@ Example
 
 .. code-block:: javascript
 
-    Web3.modules
+    xdc3.modules
     > {
         Eth: Eth function(provider, options?, net?),
         Net: Net function(provider, options?, net?),
@@ -73,8 +73,8 @@ version
 
 .. code-block:: javascript
 
-    Web3.version
-    web3.version
+    xdc3.version
+    xdc3.version
 
 Contains the version of the ``web3`` wrapper class.
 
@@ -90,22 +90,5 @@ Example
 
 .. code-block:: javascript
 
-    web3.version;
+    xdc3.version;
     > "1.0.0"
-
-
-------------------------------------------------------------------------------
-
-
-utils
-=====================
-
-    Static property of the Web3 class.
-
-.. code-block:: javascript
-
-    Web3.utils
-
-    Utility functions are also exposes on the ``Web3`` class object directly.
-
-See :ref:`web3.utils <utils>` for more.

@@ -3,32 +3,32 @@
 .. include:: include_announcement.rst
 
 ========
-web3.eth
+xdc3.eth
 ========
 
-The ``web3-eth`` package allows you to interact with an Ethereum blockchain and Ethereum smart contracts.
+The ``xdc3-eth`` package allows you to interact with an Ethereum blockchain and Ethereum smart contracts.
 
 
 .. code-block:: javascript
 
-    import Web3 from 'web3';
-    import {Eth} from 'web3-eth';
+    import xdc3 from 'xdc3';
+    import {Eth} from 'xdc3-eth';
 
-    // "Web3.givenProvider" will be set if in an Ethereum supported browser.
-    const eth = new Eth(Web3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
+    // "xdc3.givenProvider" will be set if in an XinFin supported browser.
+    const eth = new Eth(xdc3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
 
 
-    // or using the web3 umbrella package
+    // or using the xdc3 umbrella package
 
-    const web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
+    const xdc3 = new xdc3(xdc3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
 
-    // -> web3.eth
+    // -> xdc3.eth
 
 
 Note on checksum addresses
 =============================
 
-All Ethereum addresses returned by functions of this package are returned as checksum addresses.
+All XinFin addresses returned by functions of this package are returned as checksum addresses.
 This means some letters are uppercase and some are lowercase.
 Based on that it will calculate a checksum for the address and prove its correctness.
 Incorrect checksum addresses will throw an error when passed into functions.
@@ -41,7 +41,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getAccounts(console.log);
+    xdc3..eth.getAccounts(console.log);
     > ["0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe" ,"0x85F43D8a49eeB85d32Cf465507DD71d507100C1d"]
 
 
@@ -51,7 +51,7 @@ Example
 subscribe
 =====================
 
-For ``web3.eth.subscribe`` see the :ref:`Subscribe reference documentation <eth-subscribe>`
+For ``xdc3.eth.subscribe`` see the :ref:`Subscribe reference documentation <eth-subscribe>`
 
 
 ------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ For ``web3.eth.subscribe`` see the :ref:`Subscribe reference documentation <eth-
 Contract
 =====================
 
-For ``web3.eth.Contract`` see the :ref:`Contract reference documentation <eth-contract>`
+For ``xdc3.eth.Contract`` see the :ref:`Contract reference documentation <eth-contract>`
 
 
 ------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ For ``web3.eth.Contract`` see the :ref:`Contract reference documentation <eth-co
 Iban
 =====================
 
-For ``web3.eth.Iban`` see the :ref:`Iban reference documentation <eth-iban>`
+For ``xdc3.eth.Iban`` see the :ref:`Iban reference documentation <eth-iban>`
 
 
 ------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ For ``web3.eth.Iban`` see the :ref:`Iban reference documentation <eth-iban>`
 personal
 =====================
 
-For ``web3.eth.personal`` see the :ref:`personal reference documentation <eth-personal>`
+For ``xdc3.eth.personal`` see the :ref:`personal reference documentation <eth-personal>`
 
 
 ------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ For ``web3.eth.personal`` see the :ref:`personal reference documentation <eth-pe
 accounts
 =====================
 
-For ``web3.eth.accounts`` see the :ref:`accounts reference documentation <eth-accounts>`
+For ``xdc3.eth.accounts`` see the :ref:`accounts reference documentation <eth-accounts>`
 
 
 ------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ For ``web3.eth.accounts`` see the :ref:`accounts reference documentation <eth-ac
 ens
 =====================
 
-For ``web3.eth.ens`` see the :ref:`Ens reference documentation <eth-ens>`
+For ``xdc3.eth.ens`` see the :ref:`Ens reference documentation <eth-ens>`
 
 
 
@@ -103,7 +103,7 @@ For ``web3.eth.ens`` see the :ref:`Ens reference documentation <eth-ens>`
 abi
 =====================
 
-For ``web3.eth.abi`` see the :ref:`ABI reference documentation <eth-abi>`
+For ``xdc3.eth.abi`` see the :ref:`ABI reference documentation <eth-abi>`
 
 
 ------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ For ``web3.eth.abi`` see the :ref:`ABI reference documentation <eth-abi>`
 net
 =====================
 
-For ``web3.eth.net`` see the :ref:`net reference documentation <eth-net>`
+For ``xdc3.eth.net`` see the :ref:`net reference documentation <eth-net>`
 
 
 ------------------------------------------------------------------------------
@@ -130,14 +130,14 @@ defaultAccount
 
 .. code-block:: javascript
 
-    web3.eth.defaultAccount
+    xdc3.eth.defaultAccount
 
 This default address is used as the default ``"from"`` property, if no ``"from"`` property is specified in for the following methods:
 
-- :ref:`web3.eth.sendTransaction() <eth-sendtransaction>`
-- :ref:`web3.eth.call() <eth-call>`
-- :ref:`new web3.eth.Contract() -> myContract.methods.myMethod().call() <contract-call>`
-- :ref:`new web3.eth.Contract() -> myContract.methods.myMethod().send() <contract-send>`
+- :ref:`xdc3.eth.sendTransaction() <eth-sendtransaction>`
+- :ref:`xdc3.eth.call() <eth-call>`
+- :ref:`new xdc3.eth.Contract() -> myContract.methods.myMethod().call() <contract-call>`
+- :ref:`new xdc3.eth.Contract() -> myContract.methods.myMethod().send() <contract-send>`
 
 --------
 Property
@@ -154,11 +154,11 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.defaultAccount;
+    xdc3.eth.defaultAccount;
     > undefined
 
     // set the default account
-    web3.eth.defaultAccount = '0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe';
+    xdc3.eth.defaultAccount = '0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe';
 
 
 ------------------------------------------------------------------------------
@@ -170,17 +170,17 @@ defaultBlock
 
 .. code-block:: javascript
 
-    web3.eth.defaultBlock
+    xdc3.eth.defaultBlock
 
 The default block is used for certain methods. You can override it by passing in the defaultBlock as last parameter.
 The default value is "latest".
 
-- :ref:`web3.eth.getBalance() <eth-getbalance>`
-- :ref:`web3.eth.getCode() <eth-getcode>`
-- :ref:`web3.eth.getTransactionCount() <eth-gettransactioncount>`
-- :ref:`web3.eth.getStorageAt() <eth-getstorageat>`
-- :ref:`web3.eth.call() <eth-call>`
-- :ref:`new web3.eth.Contract() -> myContract.methods.myMethod().call() <contract-call>`
+- :ref:`xdc3.eth.getBalance() <eth-getbalance>`
+- :ref:`xdc3.eth.getCode() <eth-getcode>`
+- :ref:`xdc3.eth.getTransactionCount() <eth-gettransactioncount>`
+- :ref:`xdc3.eth.getStorageAt() <eth-getstorageat>`
+- :ref:`xdc3.eth.call() <eth-call>`
+- :ref:`new xdc3.eth.Contract() -> myContract.methods.myMethod().call() <contract-call>`
 
 ----------
 Property
@@ -203,11 +203,11 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.defaultBlock;
+    xdc3.eth.defaultBlock;
     > "latest"
 
     // set the default block
-    web3.eth.defaultBlock = 231;
+    xdc3.eth.defaultBlock = 231;
 
 
 ------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ getProtocolVersion
 
 .. code-block:: javascript
 
-    web3.eth.getProtocolVersion([callback])
+    xdc3.eth.getProtocolVersion([callback])
 
 Returns the ethereum protocol version of the node.
 
@@ -234,7 +234,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getProtocolVersion()
+    xdc3.eth.getProtocolVersion()
     .then(console.log);
     > "63"
 
@@ -246,7 +246,7 @@ isSyncing
 
 .. code-block:: javascript
 
-    web3.eth.isSyncing([callback])
+    xdc3.eth.isSyncing([callback])
 
 Checks if the node is currently syncing and returns either a syncing object, or ``false``.
 
@@ -271,7 +271,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.isSyncing()
+    xdc3.eth.isSyncing()
     .then(console.log);
 
     > {
@@ -307,7 +307,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getCoinbase()
+    xdc3.eth.getCoinbase()
     .then(console.log);
     > "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe"
 
@@ -319,7 +319,7 @@ isMining
 
 .. code-block:: javascript
 
-    web3.eth.isMining([callback])
+    xdc3.eth.isMining([callback])
 
 
 Checks whether the node is mining or not.
@@ -337,7 +337,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.isMining()
+    xdc3.eth.isMining()
     .then(console.log);
     > true
 
@@ -349,7 +349,7 @@ getHashrate
 
 .. code-block:: javascript
 
-    web3.eth.getHashrate([callback])
+    xdc3.eth.getHashrate([callback])
 
 Returns the number of hashes per second that the node is mining with.
 
@@ -366,7 +366,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getHashrate()
+    xdc3.eth.getHashrate()
     .then(console.log);
     > 493736
 
@@ -381,7 +381,7 @@ getGasPrice
 
 .. code-block:: javascript
 
-    web3.eth.getGasPrice([callback])
+    xdc3.eth.getGasPrice([callback])
 
 
 Returns the current gas price oracle.
@@ -403,7 +403,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getGasPrice()
+    xdc3.eth.getGasPrice()
     .then(console.log);
     > "20000000000"
 
@@ -417,14 +417,14 @@ getAccounts
 
 .. code-block:: javascript
 
-    web3.eth.getAccounts([callback])
+    xdc3.eth.getAccounts([callback])
 
 Returns a list of accounts the node controls by using the provider and calling
-the RPC method ``eth_accounts``. Using :ref:`web3.eth.accounts.create() <accounts-create>`
+the RPC method ``eth_accounts``. Using :ref:`xdc3.eth.accounts.create() <accounts-create>`
 will not add accounts into this list. For that use
-:ref:`web3.eth.personal.newAccount() <personal-newaccount>`.
+:ref:`xdc3.eth.personal.newAccount() <personal-newaccount>`.
 
-The results are the same as :ref:`web3.eth.personal.getAccounts() <personal-getaccounts>` except that calls
+The results are the same as :ref:`xdc3.eth.personal.getAccounts() <personal-getaccounts>` except that calls
 the RPC method ``personal_listAccounts``.
 
 -------
@@ -441,7 +441,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getAccounts()
+    xdc3.eth.getAccounts()
     .then(console.log);
     > ["0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "0xDCc6960376d6C6dEa93647383FfB245CfCed97Cf"]
 
@@ -453,7 +453,7 @@ getBlockNumber
 
 .. code-block:: javascript
 
-    web3.eth.getBlockNumber([callback])
+    xdc3.eth.getBlockNumber([callback])
 
 Returns the current block number.
 
@@ -470,7 +470,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getBlockNumber()
+    xdc3.eth.getBlockNumber()
     .then(console.log);
     > 2744
 
@@ -484,7 +484,7 @@ getBalance
 
 .. code-block:: javascript
 
-    web3.eth.getBalance(address [, defaultBlock] [, callback])
+    xdc3.eth.getBalance(address [, defaultBlock] [, callback])
 
 Get the balance of an address at a given block.
 
@@ -493,7 +493,7 @@ Parameters
 ----------
 
 1. ``String`` - The address to get the balance of.
-2. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`web3.eth.defaultBlock <eth-defaultblock>`.
+2. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`xdc3.eth.defaultBlock <eth-defaultblock>`.
 3. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
 -------
@@ -512,7 +512,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1")
+    xdc3.eth.getBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1")
     .then(console.log);
     > "1000000000000"
 
@@ -526,7 +526,7 @@ getStorageAt
 
 .. code-block:: javascript
 
-    web3.eth.getStorageAt(address, position [, defaultBlock] [, callback])
+    xdc3.eth.getStorageAt(address, position [, defaultBlock] [, callback])
 
 Get the storage at a specific position of an address.
 
@@ -536,7 +536,7 @@ Parameters
 
 1. ``String`` - The address to get the storage from.
 2. ``Number`` - The index position of the storage.
-3. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`web3.eth.defaultBlock <eth-defaultblock>`.
+3. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`xdc3.eth.defaultBlock <eth-defaultblock>`.
 4. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
 
@@ -553,7 +553,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getStorageAt("0x407d73d8a49eeb85d32cf465507dd71d507100c1", 0)
+    xdc3.eth.getStorageAt("0x407d73d8a49eeb85d32cf465507dd71d507100c1", 0)
     .then(console.log);
     > "0x033456732123ffff2342342dd12342434324234234fd234fd23fd4f23d4234"
 
@@ -567,7 +567,7 @@ getCode
 
 .. code-block:: javascript
 
-    web3.eth.getCode(address [, defaultBlock] [, callback])
+    xdc3.eth.getCode(address [, defaultBlock] [, callback])
 
 Get the code at a specific address.
 
@@ -576,7 +576,7 @@ Parameters
 ----------
 
 1. ``String`` - The address to get the code from.
-2. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`web3.eth.defaultBlock <eth-defaultblock>`.
+2. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`xdc3.eth.defaultBlock <eth-defaultblock>`.
 3. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
 -------
@@ -593,7 +593,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getCode("0xd5677cf67b5aa051bb40496e68ad359eb97cfbf8")
+    xdc3.eth.getCode("0xd5677cf67b5aa051bb40496e68ad359eb97cfbf8")
     .then(console.log);
     > "0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056"
 
@@ -607,7 +607,7 @@ getBlock
 
 .. code-block:: javascript
 
-     web3.eth.getBlock(blockHashOrBlockNumber [, returnTransactionObjects] [, callback])
+     xdc3.eth.getBlock(blockHashOrBlockNumber [, returnTransactionObjects] [, callback])
 
 Returns a block matching the block number or block hash.
 
@@ -652,7 +652,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getBlock(3150)
+    xdc3.eth.getBlock(3150)
     .then(console.log);
 
     > {
@@ -687,7 +687,7 @@ getBlockTransactionCount
 
 .. code-block:: javascript
 
-    web3.eth.getBlockTransactionCount(blockHashOrBlockNumber [, callback])
+    xdc3.eth.getBlockTransactionCount(blockHashOrBlockNumber [, callback])
 
 Returns the number of transaction in a given block.
 
@@ -713,7 +713,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getBlockTransactionCount("0x407d73d8a49eeb85d32cf465507dd71d507100c1")
+    xdc3.eth.getBlockTransactionCount("0x407d73d8a49eeb85d32cf465507dd71d507100c1")
     .then(console.log);
     > 1
 
@@ -725,7 +725,7 @@ getUncle
 
 .. code-block:: javascript
 
-    web3.eth.getUncle(blockHashOrBlockNumber, uncleIndex [, callback])
+    xdc3.eth.getUncle(blockHashOrBlockNumber, uncleIndex [, callback])
 
 Returns a blocks uncle by a given uncle index position.
 
@@ -743,7 +743,7 @@ Returns
 -------
 
 
-``Promise<object>`` - The returned uncle. For a return value see :ref:`web3.eth.getBlock() <eth-getblock>`.
+``Promise<object>`` - The returned uncle. For a return value see :ref:`xdc3.eth.getBlock() <eth-getblock>`.
 
 .. note:: An uncle doesn't contain individual transactions.
 
@@ -754,9 +754,9 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getUncle(500, 0)
+    xdc3.eth.getUncle(500, 0)
     .then(console.log);
-    > // see web3.eth.getBlock
+    > // see xdc3.eth.getBlock
 
 ------------------------------------------------------------------------------
 
@@ -765,7 +765,7 @@ getTransaction
 
 .. code-block:: javascript
 
-    web3.eth.getTransaction(transactionHash [, callback])
+    xdc3.eth.getTransaction(transactionHash [, callback])
 
 Returns a transaction matching the given transaction hash.
 
@@ -805,7 +805,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getTransaction('0x9fc76417374aa880d4449a1f7f31ec597f00b1f6f3dd2d66f4c9c6c445836d8b§234')
+    xdc3.eth.getTransaction('0x9fc76417374aa880d4449a1f7f31ec597f00b1f6f3dd2d66f4c9c6c445836d8b§234')
     .then(console.log);
 
     > {
@@ -847,7 +847,7 @@ Returns
 -------
 
 
-``Promise<object>`` - A transaction object, see :ref:`web3.eth.getTransaction <eth-gettransaction-return>`:
+``Promise<object>`` - A transaction object, see :ref:`xdc3.eth.getTransaction <eth-gettransaction-return>`:
 
 
 -------
@@ -857,9 +857,9 @@ Example
 
 .. code-block:: javascript
 
-    const transaction = web3.eth.getTransactionFromBlock('0x4534534534', 2)
+    const transaction = xdc3.eth.getTransactionFromBlock('0x4534534534', 2)
     .then(console.log);
-    > // see web3.eth.getTransaction
+    > // see xdc3.eth.getTransaction
 
 ------------------------------------------------------------------------------
 
@@ -868,7 +868,7 @@ getTransactionReceipt
 
 .. code-block:: javascript
 
-    web3.eth.getTransactionReceipt(hash [, callback])
+    xdc3.eth.getTransactionReceipt(hash [, callback])
 
 Returns the receipt of a transaction by transaction hash.
 
@@ -910,7 +910,7 @@ Example
 
 .. code-block:: javascript
 
-    const receipt = web3.eth.getTransactionReceipt('0x9fc76417374aa880d4449a1f7f31ec597f00b1f6f3dd2d66f4c9c6c445836d8b')
+    const receipt = xdc3.eth.getTransactionReceipt('0x9fc76417374aa880d4449a1f7f31ec597f00b1f6f3dd2d66f4c9c6c445836d8b')
     .then(console.log);
 
     > {
@@ -937,7 +937,7 @@ getTransactionCount
 
 .. code-block:: javascript
 
-    web3.eth.getTransactionCount(address [, defaultBlock] [, callback])
+    xdc3.eth.getTransactionCount(address [, defaultBlock] [, callback])
 
 Get the numbers of transactions sent from this address.
 
@@ -946,7 +946,7 @@ Parameters
 ----------
 
 1. ``String`` - The address to get the numbers of transactions from.
-2. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`web3.eth.defaultBlock <eth-defaultblock>`.
+2. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`xdc3.eth.defaultBlock <eth-defaultblock>`.
 3. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
 -------
@@ -963,7 +963,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getTransactionCount("0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe")
+    xdc3.eth.getTransactionCount("0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe")
     .then(console.log);
     > 1
 
@@ -976,7 +976,7 @@ sendTransaction
 
 .. code-block:: javascript
 
-    web3.eth.sendTransaction(transactionObject [, callback])
+    xdc3.eth.sendTransaction(transactionObject [, callback])
 
 Sends a transaction to the network.
 
@@ -986,16 +986,16 @@ Parameters
 
 
 1. ``Object`` - The transaction object to send:
-  - ``from`` - ``String|Number``: The address for the sending account. Uses the :ref:`web3.eth.defaultAccount <eth-defaultaccount>` property, if not specified. Or an address or index of a local wallet in :ref:`web3.eth.accounts.wallet <eth_accounts_wallet>`.
+  - ``from`` - ``String|Number``: The address for the sending account. Uses the :ref:`xdc3.eth.defaultAccount <eth-defaultaccount>` property, if not specified. Or an address or index of a local wallet in :ref:`xdc3.eth.accounts.wallet <eth_accounts_wallet>`.
   - ``to`` - ``String``: (optional) The destination address of the message, left undefined for a contract-creation transaction.
   - ``value`` - ``Number|String|BN|BigNumber``: (optional) The value transferred for the transaction in :ref:`wei <what-is-wei>`, also the endowment if it's a contract-creation transaction.
   - ``gas``  - ``Number``: (optional, default: To-Be-Determined) The amount of gas to use for the transaction (unused gas is refunded).
-  - ``gasPrice`` - ``Number|String|BN|BigNumber``: (optional) The price of gas for this transaction in :ref:`wei <what-is-wei>`, defaults to :ref:`web3.eth.gasPrice <eth-gasprice>`.
+  - ``gasPrice`` - ``Number|String|BN|BigNumber``: (optional) The price of gas for this transaction in :ref:`wei <what-is-wei>`, defaults to :ref:`xdc3.eth.gasPrice <eth-gasprice>`.
   - ``data`` - ``String``: (optional) Either a `ABI byte string <http://solidity.readthedocs.io/en/latest/abi-spec.html>`_ containing the data of the function call on a contract, or in the case of a contract-creation transaction the initialisation code.
   - ``nonce`` - ``Number``: (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 2. ``callback`` - ``Function``: (optional) Optional callback, returns an error object as first parameter and the result as second.
 
-.. note:: The ``from`` property can also be an address or index from the :ref:`web3.eth.accounts.wallet <eth_accounts_wallet>`. It will then sign locally using the private key of that account, and send the transaction via :ref:`web3.eth.sendSignedTransaction() <eth-sendsignedtransaction>`.
+.. note:: The ``from`` property can also be an address or index from the :ref:`xdc3.eth.accounts.wallet <eth_accounts_wallet>`. It will then sign locally using the private key of that account, and send the transaction via :ref:`xdc3.eth.sendSignedTransaction() <eth-sendsignedtransaction>`.
 
 .. _eth-sendtransaction-return:
 
@@ -1024,7 +1024,7 @@ Example
 
 
     // using the callback
-    web3.eth.sendTransaction({
+    xdc3.eth.sendTransaction({
         from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
         data: code // deploying a contract
     }, function(error, hash){
@@ -1032,7 +1032,7 @@ Example
     });
 
     // using the promise
-    web3.eth.sendTransaction({
+    xdc3.eth.sendTransaction({
         from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
         to: '0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe',
         value: '1000000000000000'
@@ -1043,7 +1043,7 @@ Example
 
 
     // using the event emitter
-    web3.eth.sendTransaction({
+    xdc3.eth.sendTransaction({
         from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
         to: '0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe',
         value: '1000000000000000'
@@ -1066,9 +1066,9 @@ sendSignedTransaction
 
 .. code-block:: javascript
 
-    web3.eth.sendSignedTransaction(signedTransactionData [, callback])
+    xdc3.eth.sendSignedTransaction(signedTransactionData [, callback])
 
-Sends an already signed transaction, generated for example using :ref:`web3.eth.accounts.signTransaction <eth-accounts-signtransaction>`.
+Sends an already signed transaction, generated for example using :ref:`xdc3.eth.accounts.signTransaction <eth-accounts-signtransaction>`.
 
 ----------
 Parameters
@@ -1084,7 +1084,7 @@ Returns
 
 ``PromiEvent``: A :ref:`promise combined event emitter <promiEvent>`. Will be resolved when the transaction :ref:`receipt <eth-gettransactionreceipt-return>` is available.
 
-Please see the return values for :ref:`web3.eth.sendTransaction <eth-sendtransaction-return>` for details.
+Please see the return values for :ref:`xdc3.eth.sendTransaction <eth-sendtransaction-return>` for details.
 
 -------
 Example
@@ -1113,7 +1113,7 @@ Example
     // console.log(serializedTx.toString('hex'));
     // 0xf889808609184e72a00082271094000000000000000000000000000000000000000080a47f74657374320000000000000000000000000000000000000000000000000000006000571ca08a8bbf888cfa37bbf0bb965423625641fc956967b81d12e23709cead01446075a01ce999b56a8a88504be365442ea61239198e23d1fce7d00fcfc5cd3b44b7215f
 
-    web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'))
+    xdc3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'))
     .on('receipt', console.log);
 
     > // see eth.getTransactionReceipt() for details
@@ -1125,7 +1125,7 @@ sign
 
 .. code-block:: javascript
 
-    web3.eth.sign(dataToSign, address [, callback])
+    xdc3.eth.sign(dataToSign, address [, callback])
 
 Signs data using a specific account. This account needs to be unlocked.
 
@@ -1134,11 +1134,11 @@ Parameters
 ----------
 
 
-1. ``String`` - Data to sign. If String it will be converted using :ref:`web3.utils.utf8ToHex <utils-utf8tohex>`.
-2. ``String|Number`` - Address to sign data with. Or an address or index of a local wallet in :ref:`web3.eth.accounts.wallet <eth_accounts_wallet>`.
+1. ``String`` - Data to sign. If String it will be converted using :ref:`xdc3.utils.utf8ToHex <utils-utf8tohex>`.
+2. ``String|Number`` - Address to sign data with. Or an address or index of a local wallet in :ref:`xdc3.eth.accounts.wallet <eth_accounts_wallet>`.
 3. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
-.. note:: The 2. ``address`` parameter can also be an address or index from the :ref:`web3.eth.accounts.wallet <eth_accounts_wallet>`. It will then sign locally using the private key of this account.
+.. note:: The 2. ``address`` parameter can also be an address or index from the :ref:`xdc3.eth.accounts.wallet <eth_accounts_wallet>`. It will then sign locally using the private key of this account.
 
 
 -------
@@ -1156,12 +1156,12 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.sign("Hello world", "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe")
+    xdc3.eth.sign("Hello world", "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe")
     .then(console.log);
     > "0x30755ed65396facf86c53e6217c52b4daebe72aa4941d89635409de4c9c7f9466d4e9aaec7977f05e923889b33c0d0dd27d7226b6e6f56ce737465c5cfd04be400"
 
     // the below is the same
-    web3.eth.sign(web3.utils.utf8ToHex("Hello world"), "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe")
+    xdc3.eth.sign(xdc3.utils.utf8ToHex("Hello world"), "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe")
     .then(console.log);
     > "0x30755ed65396facf86c53e6217c52b4daebe72aa4941d89635409de4c9c7f9466d4e9aaec7977f05e923889b33c0d0dd27d7226b6e6f56ce737465c5cfd04be400"
 
@@ -1172,7 +1172,7 @@ signTransaction
 
 .. code-block:: javascript
 
-    web3.eth.signTransaction(transactionObject [, callback])
+    xdc3.eth.signTransaction(transactionObject [, callback])
 
 The method ``signTransaction`` signs a transaction with the private key of the given address.
 This method does only work if you're connected to a Parity node.
@@ -1182,7 +1182,7 @@ Parameters
 ----------
 
 
-1. ``Object`` - The transaction data to sign :ref:`web3.eth.sendTransaction() <eth-sendtransaction>` for more.
+1. ``Object`` - The transaction data to sign :ref:`xdc3.eth.sendTransaction() <eth-sendtransaction>` for more.
 3. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
 
@@ -1191,7 +1191,7 @@ Returns
 -------
 
 
-``Promise<object>`` - The RLP encoded transaction. The ``raw`` property can be used to send the transaction using :ref:`web3.eth.sendSignedTransaction <eth-sendsignedtransaction>`.
+``Promise<object>`` - The RLP encoded transaction. The ``raw`` property can be used to send the transaction using :ref:`xdc3.eth.sendSignedTransaction <eth-sendsignedtransaction>`.
 
 
 -------
@@ -1201,7 +1201,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.signTransaction({
+    xdc3.eth.signTransaction({
         from: "0xEB014f8c8B418Db6b45774c326A0E64C78914dC0",
         gasPrice: "20000000000",
         gas: "21000",
@@ -1234,7 +1234,7 @@ call
 
 .. code-block:: javascript
 
-    web3.eth.call(callObject [, defaultBlock] [, callback])
+    xdc3.eth.call(callObject [, defaultBlock] [, callback])
 
 Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
 
@@ -1242,8 +1242,8 @@ Executes a message call transaction, which is directly executed in the VM of the
 Parameters
 ----------
 
-1. ``Object`` - A transaction object see :ref:`web3.eth.sendTransaction <eth-sendtransaction-return>`, with the difference that for calls the ``from`` property is optional as well.
-2. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`web3.eth.defaultBlock <eth-defaultblock>`.
+1. ``Object`` - A transaction object see :ref:`xdc3.eth.sendTransaction <eth-sendtransaction-return>`, with the difference that for calls the ``from`` property is optional as well.
+2. ``Number|String`` - (optional) If you pass this parameter it will not use the default block set with :ref:`xdc3.eth.defaultBlock <eth-defaultblock>`.
 3. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
 -------
@@ -1259,7 +1259,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.call({
+    xdc3.eth.call({
         to: "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", // contract address
         data: "0xc6888fa10000000000000000000000000000000000000000000000000000000000000003"
     })
@@ -1273,7 +1273,7 @@ estimateGas
 
 .. code-block:: javascript
 
-    web3.eth.estimateGas(callObject [, callback])
+    xdc3.eth.estimateGas(callObject [, callback])
 
 Executes a message call or transaction and returns the amount of the gas used.
 
@@ -1282,7 +1282,7 @@ Parameters
 ----------
 
 
-1. ``Object`` - A transaction object see :ref:`web3.eth.sendTransaction <eth-sendtransaction-return>`, with the difference that for calls the ``from`` property is optional as well.
+1. ``Object`` - A transaction object see :ref:`xdc3.eth.sendTransaction <eth-sendtransaction-return>`, with the difference that for calls the ``from`` property is optional as well.
 2. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
 
@@ -1299,7 +1299,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.estimateGas({
+    xdc3.eth.estimateGas({
         to: "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe",
         data: "0xc6888fa10000000000000000000000000000000000000000000000000000000000000003"
     })
@@ -1313,7 +1313,7 @@ getPastLogs
 
 .. code-block:: javascript
 
-    web3.eth.getPastLogs(options [, callback])
+    xdc3.eth.getPastLogs(options [, callback])
 
 Gets past logs, matching the given options.
 
@@ -1353,7 +1353,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getPastLogs({
+    xdc3.eth.getPastLogs({
         address: "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe",
         topics: ["0x033456732123ffff2342342dd12342434324234234fd234fd23fd4f23d4234"]
     })
@@ -1378,7 +1378,7 @@ getWork
 
 .. code-block:: javascript
 
-    web3.eth.getWork([callback])
+    xdc3.eth.getWork([callback])
 
 Gets work for miners to mine on. Returns the hash of the current block, the seedHash, and the boundary condition to be met ("target").
 
@@ -1405,7 +1405,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.getWork()
+    xdc3.eth.getWork()
     .then(console.log);
     > [
       "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
@@ -1420,7 +1420,7 @@ submitWork
 
 .. code-block:: javascript
 
-    web3.eth.submitWork(nonce, powHash, digest, [callback])
+    xdc3.eth.submitWork(nonce, powHash, digest, [callback])
 
 Used for submitting a proof-of-work solution.
 
@@ -1446,7 +1446,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.submitWork([
+    xdc3.eth.submitWork([
         "0x0000000000000001",
         "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
         "0xD1FE5700000000000000000000000000D1FE5700000000000000000000000000"
@@ -1461,10 +1461,10 @@ requestAccounts
 
 .. code-block:: javascript
 
-    web3.eth.requestAccounts([callback])
+    xdc3.eth.requestAccounts([callback])
 
 This method will request/enable the accounts from the current environment it is running (Metamask, Status or Mist).
-It doesn't work if you're connected to a node with a default Web3.js provider. (WebsocketProvider, HttpProvidder and IpcProvider)
+It doesn't work if you're connected to a node with a default xdc3.js provider. (WebsocketProvider, HttpProvidder and IpcProvider)
 This method will only work if you're using the injected provider from a application like Status, Mist or Metamask.
 
 For further information about the behavior of this method please read the EIP of it: `EIP-1102 <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1102.md>`_
@@ -1488,7 +1488,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.requestAccounts().then(console.log);
+    xdc3.eth.requestAccounts().then(console.log);
     > ['0aae0B295369a9FD31d5F28D9Ec85E40f4cb692BAf', 0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe]
 
 ------------------------------------------------------------------------------

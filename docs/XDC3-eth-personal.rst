@@ -3,28 +3,28 @@
 .. include:: include_announcement.rst
 
 ========
-web3.eth.personal
+xdc3.eth.personal
 ========
 
 
-The ``web3-eth-personal`` package allows you to interact with the Ethereum node's accounts.
+The ``xdc3-eth-personal`` package allows you to interact with the Ethereum node's accounts.
 
 .. note:: Many of these functions send sensitive information, like password. Never call these functions over a unsecured Websocket or HTTP provider, as your password will be sent in plain text!
 
 
 .. code-block:: javascript
 
-    import Web3 from 'web3';
-    import {Personal} from 'web3-eth-personal';
+    import xdc3 from 'xdc3';
+    import {Personal} from 'xdc3-eth-personal';
 
-    // "Web3.givenProvider" will be set if in an Ethereum supported browser.
-    const personal = new Personal(Web3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
+    // "xdc3.givenProvider" will be set if in an Ethereum supported browser.
+    const personal = new Personal(xdc3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
 
 
-    // or using the web3 umbrella package
-    const web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
+    // or using the xdc3 umbrella package
+    const xdc3 = new xdc3(xdc3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
 
-    // -> web3.eth.personal
+    // -> xdc3.eth.personal
 
 
 ------------------------------------------------------------------------------
@@ -43,11 +43,11 @@ newAccount
 
 .. code-block:: javascript
 
-    web3.eth.personal.newAccount(password, [callback])
+    xdc3.eth.personal.newAccount(password, [callback])
 
-Create a new account on the node that Web3 is connected to with its provider.
+Create a new account on the node that xdc3 is connected to with its provider.
 The RPC method used is ``personal_newAccount``. It differs from
-:ref:`web3.eth.accounts.create() <accounts-create>` where the key pair is
+:ref:`xdc3.eth.accounts.create() <accounts-create>` where the key pair is
 created only on client and it's up to the developer to manage it.
 
 .. note:: Never call this function over a unsecured Websocket or HTTP provider, as your password will be send in plain text!
@@ -70,7 +70,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.personal.newAccount('!@superpassword')
+    xdc3.eth.personal.newAccount('!@superpassword')
     .then(console.log);
     > '0x1234567891011121314151617181920212223456'
 
@@ -82,7 +82,7 @@ sign
 
 .. code-block:: javascript
 
-    web3.eth.personal.sign(dataToSign, address, password [, callback])
+    xdc3.eth.personal.sign(dataToSign, address, password [, callback])
 
 Signs data using a specific account. This data is before UTF-8 HEX decoded and enveloped as follows: ``"\x19Ethereum Signed Message:\n" + message.length + message``.
 
@@ -95,7 +95,7 @@ Parameters
 ----------
 
 
-1. ``String`` - Data to sign. If String it will be converted using :ref:`web3.utils.utf8ToHex <utils-utf8tohex>`.
+1. ``String`` - Data to sign. If String it will be converted using :ref:`xdc3.utils.utf8ToHex <utils-utf8tohex>`.
 2. ``String`` - Address to sign data with.
 3. ``String`` - The password of the account to sign data with.
 4. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
@@ -116,12 +116,12 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.personal.sign("Hello world", "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "test password!")
+    xdc3.eth.personal.sign("Hello world", "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "test password!")
     .then(console.log);
     > "0x30755ed65396facf86c53e6217c52b4daebe72aa4941d89635409de4c9c7f9466d4e9aaec7977f05e923889b33c0d0dd27d7226b6e6f56ce737465c5cfd04be400"
 
     // the below is the same
-    web3.eth.personal.sign(web3.utils.utf8ToHex("Hello world"), "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "test password!")
+    xdc3.eth.personal.sign(xdc3.utils.utf8ToHex("Hello world"), "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "test password!")
     .then(console.log);
     > "0x30755ed65396facf86c53e6217c52b4daebe72aa4941d89635409de4c9c7f9466d4e9aaec7977f05e923889b33c0d0dd27d7226b6e6f56ce737465c5cfd04be400"
 
@@ -134,7 +134,7 @@ ecRecover
 
 .. code-block:: javascript
 
-    web3.eth.personal.ecRecover(dataThatWasSigned, signature [, callback])
+    xdc3.eth.personal.ecRecover(dataThatWasSigned, signature [, callback])
 
 Recovers the account that signed the data.
 
@@ -143,7 +143,7 @@ Parameters
 ----------
 
 
-1. ``String`` - Data that was signed. If String it will be converted using :ref:`web3.utils.utf8ToHex <utils-utf8tohex>`.
+1. ``String`` - Data that was signed. If String it will be converted using :ref:`xdc3.utils.utf8ToHex <utils-utf8tohex>`.
 2. ``String`` - The signature.
 3. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
@@ -163,7 +163,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.personal.ecRecover("Hello world", "0x30755ed65396facf86c53e6217c52b4daebe72aa4941d89635409de4c9c7f9466d4e9aaec7977f05e923889b33c0d0dd27d7226b6e6f56ce737465c5cfd04be400").then(console.log);
+    xdc3.eth.personal.ecRecover("Hello world", "0x30755ed65396facf86c53e6217c52b4daebe72aa4941d89635409de4c9c7f9466d4e9aaec7977f05e923889b33c0d0dd27d7226b6e6f56ce737465c5cfd04be400").then(console.log);
     > "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe"
 
 ------------------------------------------------------------------------------
@@ -174,7 +174,7 @@ signTransaction
 
 .. code-block:: javascript
 
-    web3.eth.personal.signTransaction(transaction, password [, callback])
+    xdc3.eth.personal.signTransaction(transaction, password [, callback])
 
 Signs a transaction. This account needs to be unlocked.
 
@@ -185,7 +185,7 @@ Parameters
 ----------
 
 
-1. ``Object`` - The transaction data to sign :ref:`web3.eth.sendTransaction() <eth-sendtransaction>` for more.
+1. ``Object`` - The transaction data to sign :ref:`xdc3.eth.sendTransaction() <eth-sendtransaction>` for more.
 2. ``String`` - The password of the ``from`` account, to sign the transaction with.
 3. ``Function`` - (optional) Optional callback, returns an error object as first parameter and the result as second.
 
@@ -195,7 +195,7 @@ Returns
 -------
 
 
-``Promise<Object>`` - The RLP encoded transaction. The ``raw`` property can be used to send the transaction using :ref:`web3.eth.sendSignedTransaction <eth-sendsignedtransaction>`.
+``Promise<Object>`` - The RLP encoded transaction. The ``raw`` property can be used to send the transaction using :ref:`xdc3.eth.sendSignedTransaction <eth-sendsignedtransaction>`.
 
 
 -------
@@ -205,7 +205,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.signTransaction({
+    xdc3.eth.signTransaction({
         from: "0xEB014f8c8B418Db6b45774c326A0E64C78914dC0",
         gasPrice: "20000000000",
         gas: "21000",
@@ -237,7 +237,7 @@ sendTransaction
 
 .. code-block:: javascript
 
-    web3.eth.personal.sendTransaction(transactionOptions, password [, callback])
+    xdc3.eth.personal.sendTransaction(transactionOptions, password [, callback])
 
 This method sends a transaction over the management API.
 
@@ -268,7 +268,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.sendTransaction({
+    xdc3.eth.sendTransaction({
         from: "0xEB014f8c8B418Db6b45774c326A0E64C78914dC0",
         gasPrice: "20000000000",
         gas: "21000",
@@ -286,7 +286,7 @@ unlockAccount
 
 .. code-block:: javascript
 
-    web3.eth.personal.unlockAccount(address, password, unlockDuraction [, callback])
+    xdc3.eth.personal.unlockAccount(address, password, unlockDuraction [, callback])
 
 Unlocks the given account.
 
@@ -315,7 +315,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.personal.unlockAccount("0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "test password!", 600)
+    xdc3.eth.personal.unlockAccount("0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "test password!", 600)
     .then(console.log('Account unlocked!'));
     > "Account unlocked!"
 
@@ -327,7 +327,7 @@ lockAccount
 
 .. code-block:: javascript
 
-    web3.eth.personal.lockAccount(address [, callback])
+    xdc3.eth.personal.lockAccount(address [, callback])
 
 Locks the given account.
 
@@ -357,7 +357,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.personal.lockAccount("0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe")
+    xdc3.eth.personal.lockAccount("0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe")
     .then(console.log('Account locked!'));
     > "Account locked!"
 
@@ -370,14 +370,14 @@ getAccounts
 
 .. code-block:: javascript
 
-    web3.eth.personal.getAccounts([callback])
+    xdc3.eth.personal.getAccounts([callback])
 
 Returns a list of accounts the node controls by using the provider and calling
-the RPC method ``personal_listAccounts``. Using :ref:`web3.eth.accounts.create() <accounts-create>`
+the RPC method ``personal_listAccounts``. Using :ref:`xdc3.eth.accounts.create() <accounts-create>`
 will not add accounts into this list. For that use
-:ref:`web3.eth.personal.newAccount() <personal-newaccount>`.
+:ref:`xdc3.eth.personal.newAccount() <personal-newaccount>`.
 
-The results are the same as :ref:`web3.eth.getAccounts() <eth-getaccounts>` except that calls
+The results are the same as :ref:`xdc3.eth.getAccounts() <eth-getaccounts>` except that calls
 the RPC method ``eth_accounts``.
 
 -------
@@ -394,7 +394,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.personal.getAccounts()
+    xdc3.eth.personal.getAccounts()
     .then(console.log);
     > ["0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "0xDCc6960376d6C6dEa93647383FfB245CfCed97Cf"]
 
@@ -407,7 +407,7 @@ importRawKey
 
 .. code-block:: javascript
 
-    web3.eth.personal.importRawKey(privateKey, password)
+    xdc3.eth.personal.importRawKey(privateKey, password)
 
 Imports the given private key into the key store, encrypting it with the passphrase.
 
@@ -438,7 +438,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.personal.importRawKey("cd3376bb711cb332ee3fb2ca04c6a8b9f70c316fcdf7a1f44ef4c7999483295e", "password1234")
+    xdc3.eth.personal.importRawKey("cd3376bb711cb332ee3fb2ca04c6a8b9f70c316fcdf7a1f44ef4c7999483295e", "password1234")
     .then(console.log);
     > "0x8f337bf484b2fc75e4b0436645dcc226ee2ac531"
 

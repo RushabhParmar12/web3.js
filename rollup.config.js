@@ -93,9 +93,9 @@ export default (name, outputFileName, globals) => {
     // ESM
     config[1].output[0].file = 'dist/' + outputFileName + '.esm.js';
 
-    if (name === 'Web3') {
-        config[0].input = 'src/Web3.js';
-        config[1].input = 'src/Web3.js';
+    if (name === 'xdc3') {
+        config[0].input = 'src/xdc3.js';
+        config[1].input = 'src/xdc3.js';
     }
 
     return config;

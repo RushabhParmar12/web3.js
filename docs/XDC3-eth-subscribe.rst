@@ -3,10 +3,10 @@
 .. include:: include_announcement.rst
 
 =========
-web3.eth.subscribe
+xdc3.eth.subscribe
 =========
 
-The ``web3.eth.subscribe`` function lets you subscribe to specific events in the blockchain.
+The ``xdc3.eth.subscribe`` function lets you subscribe to specific events in the blockchain.
 
 
 
@@ -15,7 +15,7 @@ subscribe
 
 .. code-block:: javascript
 
-    web3.eth.subscribe(type [, options] [, callback]);
+    xdc3.eth.subscribe(type [, options] [, callback]);
 
 ----------
 Parameters
@@ -53,7 +53,7 @@ Example
 
 .. code-block:: javascript
 
-    const subscription = web3.eth.subscribe('logs', {
+    const subscription = xdc3.eth.subscribe('logs', {
         address: '0x123456..',
         topics: ['0x12345...']
     }, function(error, result){
@@ -76,11 +76,11 @@ clearSubscriptions
 
 .. code-block:: javascript
 
-    web3.eth.clearSubscriptions()
+    xdc3.eth.clearSubscriptions()
 
 Resets subscriptions.
 
-.. note:: This will not reset subscriptions from other packages like ``web3-shh``.
+.. note:: This will not reset subscriptions from other packages like ``xdc3-shh``.
 
 -------
 Returns
@@ -94,11 +94,11 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.subscribe('logs', {} ,function(){ ... });
+    xdc3.eth.subscribe('logs', {} ,function(){ ... });
 
     ...
 
-    web3.eth.clearSubscriptions();
+    xdc3.eth.clearSubscriptions();
 
 
 ------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ subscribe("pendingTransactions")
 
 .. code-block:: javascript
 
-    web3.eth.subscribe('pendingTransactions' [, callback]);
+    xdc3.eth.subscribe('pendingTransactions' [, callback]);
 
 Subscribes to incoming pending transactions.
 
@@ -143,7 +143,7 @@ Example
 
 .. code-block:: javascript
 
-    const subscription = web3.eth.subscribe('pendingTransactions', function(error, result){
+    const subscription = xdc3.eth.subscribe('pendingTransactions', function(error, result){
         if (!error)
             console.log(result);
     })
@@ -166,7 +166,7 @@ subscribe("newBlockHeaders")
 
 .. code-block:: javascript
 
-    web3.eth.subscribe('newBlockHeaders' [, callback]);
+    xdc3.eth.subscribe('newBlockHeaders' [, callback]);
 
 Subscribes to incoming block headers. This can be used as timer to check for changes on the blockchain.
 
@@ -217,7 +217,7 @@ Example
 
 .. code-block:: javascript
 
-    const subscription = web3.eth.subscribe('newBlockHeaders', function(error, result){
+    const subscription = xdc3.eth.subscribe('newBlockHeaders', function(error, result){
         if (!error) {
             console.log(result);
 
@@ -246,7 +246,7 @@ subscribe("syncing")
 
 .. code-block:: javascript
 
-    web3.eth.subscribe('syncing' [, callback]);
+    xdc3.eth.subscribe('syncing' [, callback]);
 
 Subscribe to syncing events. This will return an object when the node is syncing and when its finished syncing will return ``FALSE``.
 
@@ -267,7 +267,7 @@ Returns
 - ``"changed"`` returns ``Object``: Fires when the synchronisation is started with ``true`` and when finished with ``false``.
 - ``"error"`` returns ``Object``: Fires when an error in the subscription occurs.
 
-For the structure of a returned event ``Object`` see :ref:`web3.eth.isSyncing return values <eth-issyncing-return>`.
+For the structure of a returned event ``Object`` see :ref:`xdc3.eth.isSyncing return values <eth-issyncing-return>`.
 
 ----------------
 Notification returns
@@ -283,7 +283,7 @@ Example
 
 .. code-block:: javascript
 
-    const subscription = web3.eth.subscribe('syncing', function(error, sync){
+    const subscription = xdc3.eth.subscribe('syncing', function(error, sync){
         if (!error)
             console.log(sync);
     })
@@ -312,7 +312,7 @@ subscribe("logs")
 
 .. code-block:: javascript
 
-    web3.eth.subscribe('logs', options [, callback]);
+    xdc3.eth.subscribe('logs', options [, callback]);
 
 Subscribes to incoming logs, filtered by the given options.
 
@@ -337,14 +337,14 @@ Returns
 - ``"changed"`` returns ``Object``: Fires on each log which was removed from the blockchain. The log will have the additional property ``"removed: true"``.
 - ``"error"`` returns ``Object``: Fires when an error in the subscription occurs.
 
-For the structure of a returned event ``Object`` see :ref:`web3.eth.getPastEvents return values <eth-getpastlogs-return>`.
+For the structure of a returned event ``Object`` see :ref:`xdc3.eth.getPastEvents return values <eth-getpastlogs-return>`.
 
 ----------------
 Notification returns
 ----------------
 
 1. ``Object|Null`` - First parameter is an error object if the subscription failed.
-2. ``Object`` - The log object like in :ref:`web3.eth.getPastEvents return values <eth-getpastlogs-return>`.
+2. ``Object`` - The log object like in :ref:`xdc3.eth.getPastEvents return values <eth-getpastlogs-return>`.
 
 -------
 Example
@@ -353,7 +353,7 @@ Example
 
 .. code-block:: javascript
 
-    const subscription = web3.eth.subscribe('logs', {
+    const subscription = xdc3.eth.subscribe('logs', {
         address: '0x123456..',
         topics: ['0x12345...']
     }, (error, result) => {

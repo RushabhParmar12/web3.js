@@ -3,30 +3,30 @@
 .. include:: include_announcement.rst
 
 ========
-web3.bzz
+xdc3.bzz
 ========
 
 .. note:: This API might change over time.
 
 
-The ``web3-bzz`` package allows you to interact swarm the decentralized file store.
+The ``xdc3-bzz`` package allows you to interact swarm the decentralized file store.
 For more see the `Swarm Docs <http://swarm-guide.readthedocs.io/en/latest/>`_.
 
 
 .. code-block:: javascript
 
-    import Web3 from 'web3';
-    import {Bzz} from 'web3-bzz';
+    import xdc3 from 'xdc3';
+    import {Bzz} from 'xdc3-bzz';
 
     // will autodetect if the "ethereum" object is present and will either connect to the local swarm node, or the swarm-gateways.net.
     // Optional you can give your own provider URL; If no provider URL is given it will use "http://swarm-gateways.net"
-    const bzz = new Bzz(Web3.givenProvider || 'http://swarm-gateways.net');
+    const bzz = new Bzz(xdc3.givenProvider || 'http://swarm-gateways.net');
 
 
-    // or using the web3 umbrella package
-    const web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546');
+    // or using the xdc3 umbrella package
+    const xdc3 = new xdc3(xdc3.givenProvider || 'ws://some.local-or-remote.node:8546');
 
-    // -> web3.bzz.currentProvider // if Web3.givenProvider was an ethereum provider it will set: "http://localhost:8500" otherwise it will set: "http://swarm-gateways.net"
+    // -> xdc3.bzz.currentProvider // if xdc3.givenProvider was an ethereum provider it will set: "http://localhost:8500" otherwise it will set: "http://swarm-gateways.net"
 
 
 ------------------------------------------------------------------------------
@@ -37,17 +37,17 @@ setProvider
 
 .. code-block:: javascript
 
-    web3.bzz.setProvider(myProvider)
+    xdc3.bzz.setProvider(myProvider)
 
 Will change the provider for its module.
 
-.. note:: When called on the umbrella package ``web3`` it will also set the provider for all sub modules ``web3.eth``, ``web3.shh``, etc EXCEPT ``web3.bzz`` which needs a separate provider at all times.
+.. note:: When called on the umbrella package ``xdc3`` it will also set the provider for all sub modules ``xdc3.eth``, ``xdc3.shh``, etc EXCEPT ``xdc3.bzz`` which needs a separate provider at all times.
 
 ----------
 Parameters
 ----------
 
-1. ``Object`` - ``myProvider``: :ref:`a valid provider <web3-providers>`.
+1. ``Object`` - ``myProvider``: :ref:`a valid provider <xdc3-providers>`.
 
 -------
 Returns
@@ -61,7 +61,7 @@ Example
 
 .. code-block:: javascript
 
-    import {Bzz} from 'web3-bzz';
+    import {Bzz} from 'xdc3-bzz';
 
     const bzz = new Bzz('http://localhost:8500');
 
@@ -76,9 +76,9 @@ givenProvider
 
 .. code-block:: javascript
 
-    web3.bzz.givenProvider
+    xdc3.bzz.givenProvider
 
-When using web3.js in an Ethereum compatible browser, it will set with the current native provider by that browser.
+When using xdc3.js in an Ethereum compatible browser, it will set with the current native provider by that browser.
 Will return the given provider by the (browser) environment, otherwise ``null``.
 
 
@@ -114,7 +114,7 @@ currentProvider
 
 .. code-block:: javascript
 
-    web3.bzz.currentProvider
+    xdc3.bzz.currentProvider
 
 Will return the current provider URL, otherwise ``null``.
 
@@ -148,7 +148,7 @@ upload
 
 .. code-block:: javascript
 
-   web3.bzz.upload(mixed)
+   xdc3.bzz.upload(mixed)
 
 Uploads files folders or raw data to swarm.
 
@@ -219,7 +219,7 @@ download
 
 .. code-block:: javascript
 
-   web3.bzz.download(bzzHash [, localpath])
+   xdc3.bzz.download(bzzHash [, localpath])
 
 Downloads files and folders from swarm, as buffer or to disk (only node.js).
 
@@ -274,9 +274,9 @@ pick
 
 .. code-block:: javascript
 
-   web3.bzz.pick.file()
-   web3.bzz.pick.directory()
-   web3.bzz.pick.data()
+   xdc3.bzz.pick.file()
+   xdc3.bzz.pick.directory()
+   xdc3.bzz.pick.data()
 
 Opens a file picker in the browser to select file(s), directory or data.
 
@@ -298,7 +298,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.bzz.pick.file()
+    xdc3.bzz.pick.file()
     .then(console.log);
     > {
         ...

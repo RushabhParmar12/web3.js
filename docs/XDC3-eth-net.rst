@@ -3,7 +3,7 @@
 .. include:: include_announcement.rst
 
 =========
-web3.eth.net
+xdc3.eth.net
 =========
 
 
@@ -23,7 +23,7 @@ getNetworkType
 
 .. code-block:: javascript
 
-    web3.eth.net.getNetworkType([callback])
+    xdc3.eth.net.getNetworkType([callback])
 
 Guesses the chain the node is connected by comparing the genesis hashes.
 
@@ -46,7 +46,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.net.getNetworkType()
+    xdc3.eth.net.getNetworkType()
     .then(console.log);
     > "main"
 

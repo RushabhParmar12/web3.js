@@ -3,30 +3,30 @@
 .. include:: include_announcement.rst
 
 =========
-web3.eth.ens
+xdc3.eth.ens
 =========
 
-The ``web3.eth.ens`` functions let you interacting with Ens.
+The ``xdc3.eth.ens`` functions let you interacting with Ens.
 
 .. code-block:: javascript
 
-    import Web3 from 'web3';
-    import {Ens} from 'web3-eth-ens';
-    import {Accounts} from 'web3-eth-accounts';
+    import xdc3 from 'xdc3';
+    import {Ens} from 'xdc3-eth-ens';
+    import {Accounts} from 'xdc3-eth-accounts';
 
-    // "Web3.givenProvider" will be set if in an Ethereum supported browser.
+    // "xdc3.givenProvider" will be set if in an Ethereum supported browser.
     const eth = new Ens(
-        Web3.givenProvider || 'ws://some.local-or-remote.node:8546',
-        new Accounts(Web3.givenProvider || 'ws://some.local-or-remote.node:8546', options),
+        xdc3.givenProvider || 'ws://some.local-or-remote.node:8546',
+        new Accounts(xdc3.givenProvider || 'ws://some.local-or-remote.node:8546', options),
         options
     );
 
 
-    // or using the web3 umbrella package
+    // or using the xdc3 umbrella package
 
-    const web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
+    const xdc3 = new xdc3(xdc3.givenProvider || 'ws://some.local-or-remote.node:8546', options);
 
-    // -> web3.eth.ens
+    // -> xdc3.eth.ens
 
 ------------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ registry
 
 .. code-block:: javascript
 
-    web3.eth.ens.registry;
+    xdc3.eth.ens.registry;
 
 Returns the network specific Ens registry.
 
@@ -51,7 +51,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.registry;
+    xdc3.eth.ens.registry;
     > {
         ens: Ens,
         contract: Contract,
@@ -66,7 +66,7 @@ resolver
 
 .. code-block:: javascript
 
-    web3.eth.ens.resolver(name);
+    xdc3.eth.ens.resolver(name);
 
 Returns the resolver contract to an Ethereum address.
 
@@ -82,7 +82,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.resolver('ethereum.eth').then((contract) => {
+    xdc3.eth.ens.resolver('ethereum.eth').then((contract) => {
         console.log(contract);
     });
     > Contract<Resolver>
@@ -94,7 +94,7 @@ supportsInterface
 
 .. code-block:: javascript
 
-    web3.eth.ens.supportsInterface(ENSName, interfaceId);
+    xdc3.eth.ens.supportsInterface(ENSName, interfaceId);
 
 Checks if the current resolver does support the desired interface.
 
@@ -117,7 +117,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.supportsInterface('ethereum.eth', '0xbc1c58d1').then((supportsInterface) => {
+    xdc3.eth.ens.supportsInterface('ethereum.eth', '0xbc1c58d1').then((supportsInterface) => {
         console.log(supportsInterface);
     })
     > true
@@ -129,7 +129,7 @@ getAddress
 
 .. code-block:: javascript
 
-    web3.eth.ens.getAddress(ENSName);
+    xdc3.eth.ens.getAddress(ENSName);
 
 Resolves an Ens name to an Ethereum address.
 
@@ -151,7 +151,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.getAddress('ethereum.eth').then((address) => {
+    xdc3.eth.ens.getAddress('ethereum.eth').then((address) => {
         console.log(address);
     })
     > 0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359
@@ -163,7 +163,7 @@ setAddress
 
 .. code-block:: javascript
 
-    web3.eth.ens.setAddress(ENSName, address, options);
+    xdc3.eth.ens.setAddress(ENSName, address, options);
 
 Sets the address of an Ens name in his resolver.
 
@@ -186,7 +186,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.setAddress(
+    xdc3.eth.ens.setAddress(
         'ethereum.eth',
         '0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359',
         {
@@ -199,7 +199,7 @@ Example
 
     // Or using the event emitter
 
-    web3.eth.ens.setAddress(
+    xdc3.eth.ens.setAddress(
         'ethereum.eth',
         '0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359',
         {
@@ -219,7 +219,7 @@ Example
 
     // Or listen to the AddrChanged event on the resolver
 
-    web3.eth.ens.resolver('ethereum.eth').then((resolver) => {
+    xdc3.eth.ens.resolver('ethereum.eth').then((resolver) => {
         resolver.events.AddrChanged({fromBlock: 0}, (error, event) => {
             console.log(event);
         })
@@ -242,7 +242,7 @@ getPubkey
 
 .. code-block:: javascript
 
-    web3.eth.ens.getPubkey(ENSName);
+    xdc3.eth.ens.getPubkey(ENSName);
 
 Returns the X and Y coordinates of the curve point for the public key.
 
@@ -264,7 +264,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.getPubkey('ethereum.eth').then((result) => {
+    xdc3.eth.ens.getPubkey('ethereum.eth').then((result) => {
         console.log(result)
     });
     > {
@@ -281,7 +281,7 @@ setPubkey
 
 .. code-block:: javascript
 
-    web3.eth.ens.setPubkey(ENSName, x, y, options);
+    xdc3.eth.ens.setPubkey(ENSName, x, y, options);
 
 Sets the SECP256k1 public key associated with an Ens node
 
@@ -306,7 +306,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.setPubkey(
+    xdc3.eth.ens.setPubkey(
         'ethereum.eth',
         '0x0000000000000000000000000000000000000000000000000000000000000000',
         '0x0000000000000000000000000000000000000000000000000000000000000000',
@@ -320,7 +320,7 @@ Example
 
     // Or using the event emitter
 
-    web3.eth.ens.setPubkey(
+    xdc3.eth.ens.setPubkey(
         'ethereum.eth',
         '0x0000000000000000000000000000000000000000000000000000000000000000',
         '0x0000000000000000000000000000000000000000000000000000000000000000',
@@ -341,7 +341,7 @@ Example
 
     // Or listen to the PubkeyChanged event on the resolver
 
-    web3.eth.ens.resolver('ethereum.eth').then((resolver) => {
+    xdc3.eth.ens.resolver('ethereum.eth').then((resolver) => {
         resolver.events.PubkeyChanged({fromBlock: 0}, function(error, event) {
             console.log(event);
         })
@@ -364,7 +364,7 @@ getText
 
 .. code-block:: javascript
 
-    web3.eth.ens.getText(ENSName, key);
+    xdc3.eth.ens.getText(ENSName, key);
 
 Returns the text by the given key.
 
@@ -388,7 +388,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.getText('ethereum.eth', 'key').then((result) => {
+    xdc3.eth.ens.getText('ethereum.eth', 'key').then((result) => {
         console.log(result);
     });
     > "0000000000000000000000000000000000000000000000000000000000000000"
@@ -400,7 +400,7 @@ setText
 
 .. code-block:: javascript
 
-    web3.eth.ens.setText(ENSName, key, value, options);
+    xdc3.eth.ens.setText(ENSName, key, value, options);
 
 Sets the content hash associated with an Ens node.
 
@@ -425,7 +425,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.setText(
+    xdc3.eth.ens.setText(
         'ethereum.eth',
         'key',
         'value',
@@ -439,7 +439,7 @@ Example
 
     // Or using the event emitter
 
-    web3.eth.ens.setText(
+    xdc3.eth.ens.setText(
         'ethereum.eth',
         'key',
         'value',
@@ -460,7 +460,7 @@ Example
 
     // And listen to the TextChanged event on the resolver
 
-    web3.eth.ens.resolver('ethereum.eth').then((resolver) => {
+    xdc3.eth.ens.resolver('ethereum.eth').then((resolver) => {
         resolver.events.TextChanged({fromBlock: 0}, (error, event) => {
             console.log(event);
         })
@@ -483,7 +483,7 @@ getContent
 
 .. code-block:: javascript
 
-    web3.eth.ens.getContent(ENSName);
+    xdc3.eth.ens.getContent(ENSName);
 
 Returns the content hash associated with an Ens node.
 
@@ -505,7 +505,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.getContent('ethereum.eth').then((result) => {
+    xdc3.eth.ens.getContent('ethereum.eth').then((result) => {
         console.log(result);
     });
     > "0x0000000000000000000000000000000000000000000000000000000000000000"
@@ -517,7 +517,7 @@ setContent
 
 .. code-block:: javascript
 
-    web3.eth.ens.setContent(ENSName, hash, options);
+    xdc3.eth.ens.setContent(ENSName, hash, options);
 
 Sets the content hash associated with an Ens node.
 
@@ -541,7 +541,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.setContent(
+    xdc3.eth.ens.setContent(
         'ethereum.eth',
         '0x0000000000000000000000000000000000000000000000000000000000000000',
         {
@@ -554,7 +554,7 @@ Example
 
     // Or using the event emitter
 
-    web3.eth.ens.setContent(
+    xdc3.eth.ens.setContent(
         'ethereum.eth',
         '0x0000000000000000000000000000000000000000000000000000000000000000',
         {
@@ -574,7 +574,7 @@ Example
 
     // Or listen to the ContentChanged event on the resolver
 
-    web3.eth.ens.resolver('ethereum.eth').then((resolver) => {
+    xdc3.eth.ens.resolver('ethereum.eth').then((resolver) => {
         resolver.events.ContentChanged({fromBlock: 0}, (error, event) => {
             console.log(event);
         })
@@ -597,7 +597,7 @@ getMultihash
 
 .. code-block:: javascript
 
-    web3.eth.ens.getMultihash(ENSName);
+    xdc3.eth.ens.getMultihash(ENSName);
 
 Returns the multihash associated with an Ens node.
 
@@ -619,7 +619,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.getMultihash('ethereum.eth').then((result) => {
+    xdc3.eth.ens.getMultihash('ethereum.eth').then((result) => {
         console.log(result);
     });
     > 'QmXpSwxdmgWaYrgMUzuDWCnjsZo5RxphE3oW7VhTMSCoKK'
@@ -631,7 +631,7 @@ setMultihash
 
 .. code-block:: javascript
 
-    web3.eth.ens.setMultihash(ENSName, hash, options);
+    xdc3.eth.ens.setMultihash(ENSName, hash, options);
 
 Sets the multihash associated with an Ens node.
 
@@ -655,7 +655,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.setMultihash(
+    xdc3.eth.ens.setMultihash(
         'ethereum.eth',
         'QmXpSwxdmgWaYrgMUzuDWCnjsZo5RxphE3oW7VhTMSCoKK',
         {
@@ -668,7 +668,7 @@ Example
 
     // Or using the event emitter
 
-    web3.eth.ens.setMultihash(
+    xdc3.eth.ens.setMultihash(
         'ethereum.eth',
         'QmXpSwxdmgWaYrgMUzuDWCnjsZo5RxphE3oW7VhTMSCoKK',
         {
@@ -696,7 +696,7 @@ getContenthash
 
 .. code-block:: javascript
 
-    web3.eth.ens.getContenthash(ENSName);
+    xdc3.eth.ens.getContenthash(ENSName);
 
 Returns the contenthash associated with an Ens node.
 
@@ -718,7 +718,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.getContenthash('ethereum.eth').then((result) => {
+    xdc3.eth.ens.getContenthash('ethereum.eth').then((result) => {
         console.log(result);
     });
     > 'QmXpSwxdmgWaYrgMUzuDWCnjsZo5RxphE3oW7VhTMSCoKK'
@@ -730,7 +730,7 @@ setContenthash
 
 .. code-block:: javascript
 
-    web3.eth.ens.setContenthash(ENSName, hash, options);
+    xdc3.eth.ens.setContenthash(ENSName, hash, options);
 
 Sets the contenthash associated with an Ens node.
 
@@ -754,7 +754,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.setContenthash(
+    xdc3.eth.ens.setContenthash(
         'ethereum.eth',
         'QmXpSwxdmgWaYrgMUzuDWCnjsZo5RxphE3oW7VhTMSCoKK',
         {
@@ -767,7 +767,7 @@ Example
 
     // Or using the event emitter
 
-    web3.eth.ens.setContenthash(
+    xdc3.eth.ens.setContenthash(
         'ethereum.eth',
         'QmXpSwxdmgWaYrgMUzuDWCnjsZo5RxphE3oW7VhTMSCoKK',
         {
@@ -813,7 +813,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.resolver('ethereum.eth').then((resolver) => {
+    xdc3.eth.ens.resolver('ethereum.eth').then((resolver) => {
         resolver.events.AddrChanged({fromBlock: 0}, (error, event) => {
             console.log(event);
         })
@@ -862,7 +862,7 @@ Example
 
 .. code-block:: javascript
 
-    web3.eth.ens.resistry.then((registry) => {
+    xdc3.eth.ens.resistry.then((registry) => {
         registry.events.Transfer({fromBlock: 0}, (error, event) => {
               console.log(event);
           })
